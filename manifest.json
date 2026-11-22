@@ -1,0 +1,12 @@
+{
+  "name": "Central KAX",
+  "short_name": "Central KAX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0B0C0E",
+  "theme_color": "#0B0C0E",
+  "icons": [
+    { "src": "https://nwwjydgbnzwaqlfhkglt.supabase.co/functions/v1/app?f=icone180", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}
