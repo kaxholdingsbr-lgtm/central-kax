@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Central KAX</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Central KAX">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="apple-touch-icon" href="https://nwwjydgbnzwaqlfhkglt.supabase.co/functions/v1/app?f=icone180">
+<link rel="manifest" href="https://nwwjydgbnzwaqlfhkglt.supabase.co/functions/v1/app?f=manifest">
+<style>html,body{margin:0;height:100%;background:#0B0C0E;color:#8E939C;font:15px -apple-system,BlinkMacSystemFont,system-ui,sans-serif}#c{height:100%;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box}</style>
+</head>
+<body>
+<div id="c">Abrindo a Central KAX…</div>
+<script>
+(async function () {
+  var U = 'https://nwwjydgbnzwaqlfhkglt.supabase.co/functions/v1/app';
+  var K = 'centralKAX.web';
+  function abrir(html) { document.open(); document.write(html); document.close(); }
+  try {
+    var cache = null;
+    try { cache = JSON.parse(localStorage.getItem(K) || 'null'); } catch (e) {}
+    var v = null;
+    try { v = (await (await fetch(U + '?f=versao&t=' + Date.now(), { cache: 'no-store' })).json()).v; } catch (e) {}
+    if (cache && cache.html && (v === null || cache.v === v)) { abrir(cache.html); return; }
+    var r = await fetch(U + '?f=html&t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error(await r.text());
+    var html = await r.text();
+    try { localStorage.setItem(K, JSON.stringify({ v: Number(r.headers.get('X-Versao')) || v, html: html })); } catch (e) {}
+    abrir(html);
+  } catch (e) {
+    var c = document.getElementById('c');
+    c.textContent = 'Não consegui abrir a Central (' + e.message + '). Toque para tentar de novo.';
+    document.body.onclick = function () { location.reload(); };
+  }
+})();
+</script>
+</body>
+</html>
