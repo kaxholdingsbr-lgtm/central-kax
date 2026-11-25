@@ -7,6 +7,8 @@
   "background_color": "#0B0C0E",
   "theme_color": "#0B0C0E",
   "icons": [
-    { "src": "https://nwwjydgbnzwaqlfhkglt.supabase.co/functions/v1/app?f=icone180", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+    { "src": "./icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

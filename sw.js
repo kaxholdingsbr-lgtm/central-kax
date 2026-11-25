@@ -4,7 +4,7 @@ self.addEventListener('activate', function (e) { e.waitUntil(self.clients.claim(
 self.addEventListener('push', function (e) {
   var d = {};
   try { d = e.data ? e.data.json() : {}; } catch (x) { d = { titulo: 'Central KAX', corpo: e.data ? e.data.text() : '' }; }
-  var icone = 'https://nwwjydgbnzwaqlfhkglt.supabase.co/functions/v1/app?f=icone180';
+  var icone = 'https://kaxholdingsbr-lgtm.github.io/central-kax/icone-192.png';
   var opt = { body: d.corpo || '', icon: icone, badge: icone, tag: d.tag || undefined, data: { url: d.url || './' } };
   if (d.imagem) opt.image = d.imagem;
   if (d.urgente) { opt.requireInteraction = true; opt.vibrate = [300, 120, 300, 120, 300]; }
